@@ -130,7 +130,7 @@ function center2(data) {
     },
 
     series: [{
-      name: '累计确诊人数',
+      name: '现有确诊人数',
       type: 'map',
       mapType: 'china',
       roam: true, //   禁用拖动和缩放
