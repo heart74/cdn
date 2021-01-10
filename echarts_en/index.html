@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Information Visualization</title>
+  <link rel="stylesheet" href="css/index.css" />
+  <!-- 高德API -->
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=您申请的key值"></script>
+  <!-- 高德UI -->
+  <script type="text/javascript" src="https://webapi.amap.com/ui/1.0/main.js"></script>
+
+</head>
+
+<body>
+  <!-- 头部的盒子 -->
+  <header>
+    <h1>Real-time monitoring of the epidemic in China</h1>
+    <div class="showTime"></div>
+    <script>
+      var t = null;
+      t = setTimeout(time, 1000); //开始运行
+      function time() {
+        clearTimeout(t); //清除定时器
+        dt = new Date();
+        var y = dt.getFullYear();
+        var mt = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var h = dt.getHours(); //获取时
+        var m = dt.getMinutes(); //获取分
+        var s = dt.getSeconds(); //获取秒
+        document.querySelector(".showTime").innerHTML =
+          "Current Time：" +
+          y +
+          "-" +
+          mt +
+          "-" +
+          day +
+          " " +
+          h +
+          ":" +
+          m +
+          ":" +
+          s +
+          "";
+        t = setTimeout(time, 1000); //设定定时器，循环运行
+      }
+    </script>
+    &
+  </header>
+
+  <!-- 页面主体部分 -->
+  <section class="mainbox">
+    <div class="column">
+      <div class="panel left1">
+        <h2>Cumulative Confirmed Trend</h2>
+        <div class="chart"></div>
+        <div class="panel-footer"></div>
+      </div>
+      <div class="panel left2">
+        <h2>Increasing Confirmed Trend</h2>
+        <div class="chart">图表</div>
+        <div class="panel-footer"></div>
+      </div>
+      <div class="panel left3">
+        <h2>TOP 5 Increasing Confirmed Provinces</h2>
+        <div class="chart">图表</div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+    <div class="column">
+      <!-- no模块制作 -->
+      <div class="no">
+
+        <div id="center1">
+          <div class="item">
+            <div class="number" id="confirm">000</div>
+            <div class="text">Cumulative Confirmed</div>
+          </div>
+          <div class="item">
+            <div class="number" id="heal">000</div>
+            <div class="text">Cumulative Cured</div>
+          </div>
+          <div class="item">
+            <div class="number" id="dead">000</div>
+            <div class="text">Cumulative Deaths</div>
+          </div>
+          <div class="item">
+            <div class="number" id="nowConfirm">000</div>
+            <div class="text">Existing Confirmed</div>
+          </div>
+          <div class="item">
+            <div class="number" id="noInfect">000</div>
+            <div class="text">Asymptomatic Infected</div>
+          </div>
+          <div class="item">
+            <div class="number" id="import">000</div>
+            <div class="text">Imported Cases</div>
+          </div>
+        </div>
+
+      </div>
+      <!-- 地图模块 -->
+      <div class="map">
+        <div class="map1"></div>
+        <div class="map2"></div>
+        <div class="map3"></div>
+        <div class="chart"></div>
+        <!-- <div class="back">Go Back</div>
+        <div class="nowConfirm">Existing Confirmed</div>
+        <div class="Confirm">Cumulative Confirmed</div> -->
+        <div class="back">Go Back</div>
+        <div class="nowConfirm">Existing Confirmed</div>
+        <div class="Confirm">Cumulative Confirmed</div>
+
+
+      </div>
+    </div>
+    <div class="column">
+      <div class="panel right1">
+        <h2>TOP 10 Cumulative Confired Provinces</h2>
+        <div class="chart">图表</div>
+        <div class="panel-footer"></div>
+      </div>
+      <div class="panel right2">
+        <h2>TOP 5 Existing Confirmed Provinces</h2>
+        <div class="chart">图表</div>
+        <div class="panel-footer"></div>
+      </div>
+      <div class="panel right3">
+        <h2>TOP 5 Imported Cases Provinces</h2>
+        <div class="chart">图表</div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+  </section>
+  <script src="js/flexible.js"></script>
+  <script src="js/echarts.min.js"></script>
+  <!-- 先引入jquery -->
+  <script src="js/jquery.js"></script>
+  <!-- 必须先引入china.js 这个文件 因为中国地图需要 -->
+  <script src="js/china.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>
